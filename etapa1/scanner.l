@@ -31,16 +31,23 @@ for                 {return KW_FOR;}
 "||"				{return OPERATOR_OR;}
 
 
+<<<<<<< Updated upstream
 [a-zA-Z_]+			{hashInsert(280,yytext); return TK_IDENTIFIER; }
 [0-9]+				{hashInsert(281,yytext); return LIT_INTEGER; }
 [a-zA-z]			{hashInsert(285,yytext); return LIT_CHAR;}
 
+=======
+[a-zA-Z_]+			{hashInsert(TK_IDENTIFIER,yytext); return TK_IDENTIFIER; }
+[0-9]+				{hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
+[a-zA-z]			{hashInsert(LIT_CHAR,yytext); return LIT_CHAR;}
+ "\""+ "\""         {hashInsert(LIT_STRING,yytext);return LIT_STRING;}
+>>>>>>> Stashed changes
 
 
 
 ","		{return yytext[0];}
 ";"		{return yytext[0];}
-":"		{return yytext[0];}
+":"		{return yytext[0];}	
 "("		{return yytext[0];}
 ")"		{return yytext[0];}
 "["		{return yytext[0];}
