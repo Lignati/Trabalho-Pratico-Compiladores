@@ -24,7 +24,7 @@ for                 {return KW_FOR;}
 
 
 "<="                {return OPERATOR_LE;}
->=                  {return OPERATOR_GE;}
+>=                  {return OPERATOR_GE;}     
 ==               	{return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
