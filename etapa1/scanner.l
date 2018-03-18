@@ -1,3 +1,5 @@
+%x COMMENT
+
 %%
 
 if 					{return KW_IF;}
@@ -13,17 +15,26 @@ return				{return KW_RETURN;}
 for                 {return KW_FOR;}
 
 
-<=                  {return OPERATOR_LE;}
+"<="                  {return OPERATOR_LE;}
 >=                  {return OPERATOR_GE;}
-==                  {return OPERATOR_EQ;}
+==               {return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
-||					{return OPERATOR_OR;}
+"||"				{return OPERATOR_OR;}
 
 
 [a-zA-Z_]+			{hashInsert(1,yytext); return TOK_ID; }
 [0-9]+
-[,;:()[]{}+]		{return yytext[0];}
+","		{return yytext[0];}
+";"		{return yytext[0];}
+":"		{return yytext[0];}
+"("		{return yytext[0];}
+")"		{return yytext[0];}
+"["		{return yytext[0];}
+"]"		{return yytext[0];}
+"{"		{return yytext[0];}
+"}"		{return yytext[0];}
+"+"		{return yytext[0];}
 [-*/<>=!&$#]		{return yytext[0];}
 
 
