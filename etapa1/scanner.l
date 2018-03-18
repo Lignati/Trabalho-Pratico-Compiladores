@@ -2,7 +2,8 @@
 %x COMMENT
 %{
 #include "tokens.h"
-#include "hash.h"
+#include "hash.c"
+#include "main.c"
 
 int lineNumber;
 int isRunnig = 1;
