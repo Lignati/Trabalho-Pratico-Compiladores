@@ -25,16 +25,19 @@ for                 {return KW_FOR;}
 
 "<="                {return OPERATOR_LE;}
 >=                  {return OPERATOR_GE;}
-==  	             	{return OPERATOR_EQ;}
+==  	            {return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
 "||"				{return OPERATOR_OR;}
 
 
-[a-zA-Z_]+			{hashInsert(1,yytext); return TK_IDENTIFIER; }
-[0-9]+				{hashInsert(1,yytext); return LIT_INTEGER; }
+[a-zA-Z_]+			{hashInsert(280,yytext); return TK_IDENTIFIER; }
+[0-9]+				{hashInsert(281,yytext); return LIT_INTEGER; }
+[a-zA-z]			{hashInsert(285,yytext); return LIT_CHAR;}
 
-[a-zA-z]			{return }
+
+
+
 ","		{return yytext[0];}
 ";"		{return yytext[0];}
 ":"		{return yytext[0];}
