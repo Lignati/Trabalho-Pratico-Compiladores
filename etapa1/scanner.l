@@ -32,7 +32,7 @@ for                 {return KW_FOR;}
 "/*"				{BEGIN(COMMENT);}
 
 <COMMENT>\n 		{lineNumber++;}
-<COMMENT>"*/" 		{BEGI(INITIAL);}
+<COMMENT>"*/" 		{BEGIN(INITIAL);}
 <COMMENT>.			
 
 %%
