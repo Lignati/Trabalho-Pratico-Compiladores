@@ -4,8 +4,8 @@
 #include "tokens.h"
 #include "hash.c"
 
-int lineNumber;
-int running = 1;
+int lineNumber = 1;
+int running    = 1;
 %}
 
 %%
@@ -32,7 +32,9 @@ for                 {return KW_FOR;}
 
 
 [a-zA-Z_]+			{hashInsert(1,yytext); return TK_IDENTIFIER; }
-[0-9]+
+[0-9]+				{hashInsert(1,yytext); return LIT_INTEGER; }
+
+[a-zA-z]			{return }
 ","		{return yytext[0];}
 ";"		{return yytext[0];}
 ":"		{return yytext[0];}
@@ -43,7 +45,16 @@ for                 {return KW_FOR;}
 "{"		{return yytext[0];}
 "}"		{return yytext[0];}
 "+"		{return yytext[0];}
-[-*/<>=!&$#]		{return yytext[0];}
+"-"		{return yytext[0];}
+"*"		{return yytext[0];}
+"/"		{return yytext[0];}
+"<"		{return yytext[0];}
+">"		{return yytext[0];}
+"="		{return yytext[0];}
+"!"		{return yytext[0];}
+"&"		{return yytext[0];}
+"$"		{return yytext[0];}
+"#"		{return yytext[0];}
 
 
 \n 					{lineNumber++;}
@@ -60,6 +71,11 @@ int yywrap(){
 	return 1;
 
 }
+int getLineNumber(){
+
+	return lineNumber;
+}
+
 #include "main.c"
 
 
