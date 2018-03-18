@@ -1,4 +1,12 @@
+
 %x COMMENT
+%{
+#include "tokens.h"
+#include "hash.h"
+
+int lineNumber;
+int isRunnig = 1;
+%}
 
 %%
 
@@ -15,9 +23,9 @@ return				{return KW_RETURN;}
 for                 {return KW_FOR;}
 
 
-"<="                  {return OPERATOR_LE;}
+"<="                {return OPERATOR_LE;}
 >=                  {return OPERATOR_GE;}
-==               {return OPERATOR_EQ;}
+==               	{return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
 "||"				{return OPERATOR_OR;}
