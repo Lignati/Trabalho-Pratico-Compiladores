@@ -3,10 +3,9 @@
 %{
 #include "tokens.h"
 #include "hash.c"
-#include "main.c"
 
 int lineNumber;
-int isRunnig = 1;
+int running = 1;
 %}
 
 %%
@@ -26,7 +25,7 @@ for                 {return KW_FOR;}
 
 "<="                {return OPERATOR_LE;}
 >=                  {return OPERATOR_GE;}
-==               	{return OPERATOR_EQ;}
+==  	             	{return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
 "||"				{return OPERATOR_OR;}
@@ -56,3 +55,11 @@ for                 {return KW_FOR;}
 <COMMENT>.
 
 %%
+int yywrap(){
+	running = 0;
+	return 1;
+
+}
+#include "main.c"
+
+

@@ -8,7 +8,7 @@ HASH* table[HASH_SIZE];
 void hashInit(void){
   int i = 0;
 
-  for(i ; i<HASH_SIZE ; i++){
+  for(i = 0 ; i<HASH_SIZE ; i++){
     table[i] = 0;
   }
 }
@@ -17,7 +17,7 @@ void hashInit(void){
 int hashAddress(char *text){
   int address = 1;
   int i=0;
-  for(i; i<strlen(yytext) ; i++){
+  for(i = 0; i<strlen(yytext) ; i++){
     address = (address*text[i])%HASH_SIZE + 1;
   }
   return address-1;
@@ -43,7 +43,7 @@ void hashPrint(){
   HASH* node = 0;
 
   int i = 0;
-  for(i ; i<HASH_SIZE; i++){
+  for(i = 0 ; i<HASH_SIZE; i++){
     printf("nome:%s tipo:%d",node->yytext,node->type);
   }
 
