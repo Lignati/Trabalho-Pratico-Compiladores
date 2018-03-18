@@ -2,7 +2,7 @@
 %x COMMENT
 %{
 #include "tokens.h"
-#include "hash.h"
+#include "hash.c"
 
 int lineNumber;
 int isRunnig = 1;
@@ -31,7 +31,7 @@ for                 {return KW_FOR;}
 "||"				{return OPERATOR_OR;}
 
 
-[a-zA-Z_]+			{hashInsert(1,yytext); return TOK_ID; }
+[a-zA-Z_]+			{hashInsert(1,yytext); return TK_IDENTIFIER; }
 [0-9]+
 ","		{return yytext[0];}
 ";"		{return yytext[0];}
