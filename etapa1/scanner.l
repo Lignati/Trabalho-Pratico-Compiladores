@@ -24,14 +24,14 @@ for                 {return KW_FOR;}
 
 
 "<="                {return OPERATOR_LE;}
->=                  {return OPERATOR_GE;}     
+>=                  {return OPERATOR_GE;}
 ==               	{return OPERATOR_EQ;}
 !=                  {return OPERATOR_NE;}
 &&                  {return OPERATOR_AND;}
 "||"				{return OPERATOR_OR;}
 
 
-[a-zA-Z_]+			{hashInsert(1,yytext); return TOK_ID; }
+[a-zA-Z_]+			{hashInsert(1,yytext); return TK_IDENTIFIER; }
 [0-9]+
 ","		{return yytext[0];}
 ";"		{return yytext[0];}
@@ -47,11 +47,11 @@ for                 {return KW_FOR;}
 
 
 \n 					{lineNumber++;}
-"//".*				
+"//".*
 "/*"				{BEGIN(COMMENT);}
 
 <COMMENT>\n 		{lineNumber++;}
 <COMMENT>"*/" 		{BEGIN(INITIAL);}
-<COMMENT>.			
+<COMMENT>.
 
 %%
