@@ -31,18 +31,13 @@ for                 {return KW_FOR;}
 "||"				{return OPERATOR_OR;}
 
 
-<<<<<<< Updated upstream
-[a-zA-Z_]+			{hashInsert(280,yytext); return TK_IDENTIFIER; }
-[0-9]+				{hashInsert(281,yytext); return LIT_INTEGER; }
-[a-zA-z]			{hashInsert(285,yytext); return LIT_CHAR;}
-[0-9]+.[0-9]+ {hashInsert(LIT_REAL,yytext); printf("%s\n",yytext);}
 
-=======
+
+
 [a-zA-Z_]+			{hashInsert(TK_IDENTIFIER,yytext); return TK_IDENTIFIER; }
 [0-9]+				{hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
 [a-zA-z]			{hashInsert(LIT_CHAR,yytext); return LIT_CHAR;}
- "\""+ "\""         {hashInsert(LIT_STRING,yytext);return LIT_STRING;}
->>>>>>> Stashed changes
+ [0-9]+"."[0-9]+		{hashInsert(LIT_REAL,yytext); printf("%s\n",yytext);} 
 
 
 ","		{return yytext[0];}
@@ -74,6 +69,8 @@ for                 {return KW_FOR;}
 <COMMENT>\n 		{lineNumber++;}
 <COMMENT>"*/" 		{BEGIN(INITIAL);}
 <COMMENT>.
+
+.					{return TOKEN_ERROR;}
 
 %%
 int yywrap(){
