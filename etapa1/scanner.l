@@ -32,12 +32,13 @@ for                 {return KW_FOR;}
 
 
 
+"'"[^\n]"'"								{hashInsert(LIT_CHAR,yytext);printf("%s -> Char \n",yytext); return LIT_CHAR;}	
+[a-zA-Z_]{1}[a-zA-Z0-9_]*					{hashInsert(TK_IDENTIFIER,yytext);printf("%s -> Identificador \n",yytext);  return TK_IDENTIFIER;}
+[0-9]+									{hashInsert(LIT_INTEGER,yytext); printf("%s -> Inteiro \n",yytext);return LIT_INTEGER; }
+[0-9]+"."[0-9]+							{hashInsert(LIT_REAL,yytext);  return LIT_REAL; }
 
 
-[a-zA-Z_][a-zA-Z0-9_]*			{hashInsert(TK_IDENTIFIER,yytext); printf("%s\n",yytext); return TK_IDENTIFIER;}
-[0-9]+							{hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
-[a-zA-z]						{hashInsert(LIT_CHAR,yytext); return LIT_CHAR;}
-[0-9]+"."[0-9]+				{hashInsert(LIT_REAL,yytext);  return LIT_REAL; }
+
 
 
 ","		{return yytext[0];}
@@ -65,12 +66,13 @@ for                 {return KW_FOR;}
 \n 					{lineNumber++;}
 "//".*
 "/*"				{BEGIN(COMMENT);}
+.					{return TOKEN_ERROR;}
 
 <COMMENT>\n 		{lineNumber++;}
 <COMMENT>"*/" 		{BEGIN(INITIAL);}
 <COMMENT>.
 
-.					{return TOKEN_ERROR;}
+
 
 %%
 int yywrap(){
