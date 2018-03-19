@@ -17,7 +17,8 @@ int main(int argc, char **argv)
     else
         printf("Usage: a.out filename\n");
 
-    while (running) {
+    initMe();
+    while (isRunning()) {
         tok = yylex();
     }
 
