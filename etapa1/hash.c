@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "hash.h"node
 
 HASH* table[HASH_SIZE];
 
@@ -39,12 +39,16 @@ HASH* hashInsert(int type, char *text){
 
 }
 
+
+/*Print de toda hashtable*/
 void hashPrint(){
-  HASH* node = 0;
+  HASH* print_node;
 
   int i = 0;
   for(i = 0 ; i<HASH_SIZE; i++){
-    printf("nome:%s tipo:%d",node->yytext,node->type);
+    for(print_node = table[i]; print_node ; print_node=print_node->next){
+      printf("Hashtable[%d] = %s\n",i,print_node->yytext);
+    }
   }
 
 }

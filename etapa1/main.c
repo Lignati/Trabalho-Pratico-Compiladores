@@ -3,7 +3,7 @@ int main(int argc, char **argv)
 {
     int tok;
     FILE    *fd;
-    
+
     if (argc == 2)
     {
         if (!(fd = fopen(argv[1], "r")))
@@ -16,9 +16,11 @@ int main(int argc, char **argv)
     }
     else
         printf("Usage: a.out filename\n");
-    
+
     while (running) {
         tok = yylex();
     }
+
+    hashPrint();
     return (0);
 }
