@@ -63,7 +63,8 @@ for                 {return KW_FOR;}
 "$"		{return yytext[0];}
 "#"		{return yytext[0];}
 
-
+" "
+"\t"
 \n 					{lineNumber++;}
 "//".*
 "/*"				{BEGIN(COMMENT);}

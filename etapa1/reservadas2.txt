@@ -1,6 +1,12 @@
-input output return
-  int   bool
-realboolchar real bool char
+input 
+output 
+return
+int   
+bool
+realboolchar 
+real 
+bool 
+char####?
 if
-
-   else   while
+else
+while

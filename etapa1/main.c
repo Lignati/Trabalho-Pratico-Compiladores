@@ -49,7 +49,7 @@ int main(int argc, char **argv)
                 printf("KW_READ");
                 break;
             case KW_RETURN :
-                printf("KW_RETURN ");
+                printf("KW_RETURN");
                 break;
             case KW_PRINT:
                 printf("KW_PRINT");
@@ -94,8 +94,11 @@ int main(int argc, char **argv)
                 
                 
             default:
+                printf("%c",tok);
                 break;
+            
         }
+        printf("linha:%d\n",lineNumber);
     }
 
     hashPrint();
