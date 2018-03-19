@@ -34,10 +34,10 @@ for                 {return KW_FOR;}
 
 
 
-[a-zA-Z_]+			{hashInsert(TK_IDENTIFIER,yytext); return TK_IDENTIFIER; }
-[0-9]+				{hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
-[a-zA-z]			{hashInsert(LIT_CHAR,yytext); return LIT_CHAR;}
- [0-9]+"."[0-9]+		{hashInsert(LIT_REAL,yytext); printf("%s\n",yytext);} 
+[a-zA-Z_][a-zA-Z0-9_]*			{hashInsert(TK_IDENTIFIER,yytext); return TK_IDENTIFIER; }
+[0-9]+							{hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
+[a-zA-z]						{hashInsert(LIT_CHAR,yytext); return LIT_CHAR;}
+[0-9]+"."[0-9]+					{hashInsert(LIT_REAL,yytext); return LIT_REAL;} 
 
 
 ","		{return yytext[0];}
