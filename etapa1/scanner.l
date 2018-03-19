@@ -33,6 +33,7 @@ for                 {return KW_FOR;}
 
 
 "'"[^\n]"'"								{hashInsert(LIT_CHAR,yytext);printf("%s -> Char \n",yytext); return LIT_CHAR;}
+\"([^\"\\\n]|\\[\"\\n])+\				{hashInsert(LIT_STRING,yytext);printf("%s-> String",yytext);return LIT_STRING;}
 [a-zA-Z_]{1}[a-zA-Z0-9_]*					{hashInsert(TK_IDENTIFIER,yytext);printf("%s -> Identificador \n",yytext);  return TK_IDENTIFIER;}
 [0-9]+									{hashInsert(LIT_INTEGER,yytext); printf("%s -> Inteiro \n",yytext);return LIT_INTEGER; }
 [0-9]+"."[0-9]+							{hashInsert(LIT_REAL,yytext); printf("%s -> Float \n",yytext); return LIT_REAL; }
@@ -83,6 +84,11 @@ int yywrap(){
 int getLineNumber(){
 
 	return lineNumber;
+}
+int isRunning(){
+
+	return running;
+
 }
 
 #include "main.c"
