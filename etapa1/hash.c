@@ -1,4 +1,4 @@
-#include "hash.h"node
+#include "hash.h"
 
 HASH* table[HASH_SIZE];
 
